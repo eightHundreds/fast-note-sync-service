@@ -22,6 +22,13 @@ func (h *User) Register(c *gin.Context) {
 	response := app.NewResponse(c)
 	params := &service.UserCreateRequest{}
 
+	// Check if registration is enabled
+	if !global.Config.User.RegisterIsEnable {
+		global.Logger.Warn("api_router.user.Register registration is disabled")
+		response.ToResponse(code.ErrorUserRegisterIsDisable)
+		return
+	}
+
 	valid, errs := app.BindAndValid(c, params)
 
 	if !valid {
