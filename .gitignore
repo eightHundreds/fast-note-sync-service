@@ -79,4 +79,5 @@ Icon
 /storage/logs
 /storage/uploads
 /storage/
-/config/config-dev.yaml/obsidian-better-sync-service
+/config/config-dev.yaml
+/obsidian-better-sync-service
