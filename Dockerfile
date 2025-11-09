@@ -44,7 +44,7 @@ RUN apk --update add libstdc++ curl ca-certificates bash curl gcompat tzdata && 
 EXPOSE 9000 9001
 RUN mkdir -p /${P_NAME}/config /${P_NAME}/storage
 VOLUME /${P_NAME}
-COPY ./build/${TARGETOS}_${TARGETARCH}/${P_BIN} /${P_NAME}/
+COPY ./build/${TARGETOS}_${TARGETARCH}/${P_BIN} /
 
 # 将脚本复制到容器中
 COPY entrypoint.sh /entrypoint.sh
