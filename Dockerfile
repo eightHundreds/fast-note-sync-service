@@ -42,9 +42,8 @@ RUN apk --update add libstdc++ curl ca-certificates bash curl gcompat tzdata && 
     rm -rf  /tmp/* /var/cache/apk/*
 
 EXPOSE 9000 9001
-RUN mkdir -p /${P_NAME}/
-VOLUME /${P_NAME}/config
-VOLUME /${P_NAME}/storage
+RUN mkdir -p /${P_NAME}/config /${P_NAME}/storage
+VOLUME /${P_NAME}
 COPY ./build/${TARGETOS}_${TARGETARCH}/${P_BIN} /${P_NAME}/
 
 # 将脚本复制到容器中
