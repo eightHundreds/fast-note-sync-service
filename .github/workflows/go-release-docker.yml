@@ -89,21 +89,6 @@ jobs:
             BUILD_DATE=${{ env.BUILD_DATE }}
             GIT_COMMIT=${{ env.GIT_COMMIT }}
 
-      - name: Docker Build & Publish to DockerHub
-        uses: elgohr/Publish-Docker-Github-Action@v5
-        with:
-          dockerfile: Dockerfile
-          name: ${{ github.actor }}/${{ env.NAME }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-          platforms: linux/amd64,linux/arm64
-          snapshot: false
-          tags: "${{ env.IMAGE_TAG }}"
-          buildargs: |
-            VERSION=${{ env.IMAGE_TAG }}
-            BUILD_DATE=${{ env.BUILD_DATE }}
-            GIT_COMMIT=${{ env.GIT_COMMIT }}
-
   push-release:
     needs: [create-release, build-push-docker]
     runs-on: ubuntu-latest
